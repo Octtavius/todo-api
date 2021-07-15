@@ -37,10 +37,10 @@ public class TodoController {
     }
 
     @PostMapping("/users/{name}/todos")
-    public ResponseEntity<?> add( @PathVariable String name,
+    public ResponseEntity<?> addTodo( @PathVariable String name,
                            @Valid @RequestBody Todo todo) {
 
-        Todo createdTodo = todoService.addTodo(null, todo.getDesc(),
+        Todo createdTodo = todoService.addTodo(name, todo.getDesc(),
                 todo.getTargetDate(), todo.isDone());
 
         if (createdTodo == null) {

@@ -1,6 +1,7 @@
 package home.ie.services;
 
 import home.ie.controllers.Todo;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class TodoService {
         todos.add(new Todo(3, "Jill", "Learn Hibernate", new Date(), false));
     }
 
+    @Cacheable(cacheNames="todos", condition="#user.length < 10")
     public List<Todo> retrieveTodos(String user) {
         return todos.stream()
                 .filter(todo -> todo.getUser().equals(user))

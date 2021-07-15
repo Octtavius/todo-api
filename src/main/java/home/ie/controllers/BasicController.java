@@ -10,7 +10,7 @@ public class BasicController {
 
     @GetMapping("/welcome")
     public String welcome() {
-        return "Hello World";
+        return "Hello World!";
     }
 
     @GetMapping("/welcome-with-object")
